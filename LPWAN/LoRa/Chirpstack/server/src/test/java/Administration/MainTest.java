@@ -66,7 +66,8 @@ public class MainTest {
 		try {
 			Server server = new Server();
 			
-			String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+			//String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+			String jwt = ChirpstackRequest.chirpstackLogin("admin", "noseas");
 			int initialHouseNumber =NWA.getInstance().getHouseDBsize();
 			
 			List<JSONObject> jList = ChirpstackRequest.getDevices(jwt, 0, 100);
@@ -130,8 +131,8 @@ public class MainTest {
 		try {
 			Server server = new Server();
 			
-			// Logging in as admin
-			String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+			//String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+			String jwt = ChirpstackRequest.chirpstackLogin("admin", "noseas");
 			
 			Home testHome = server.createHome("Halfdans Alle 14");
 			
@@ -193,17 +194,24 @@ public class MainTest {
 		assertNull(ChirpstackRequest.chirpstackLogin("notAUser", "password"));
 		
 		// Test: Valid login
-		assertNotNull(ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin"));
+	 	//assertNotNull(ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin"));
+		assertNotNull(ChirpstackRequest.chirpstackLogin("admin", "noseas"));
+
+
 		
 		// Test: Obtaining glabal, admin api_key
-		assertNotNull(ChirpstackRequest.getJWT("admin@admin.dk", "admin"));
+		//		assertNotNull(ChirpstackRequest.getJWT("admin@admin.dk", "admin"));
+
+		assertNotNull(ChirpstackRequest.getJWT("admin", "noseas"));
+
 	}
 	
 	@Test
 	public void testUser() throws InterruptedException, IOException {
 		
 		// logging in as admin
-		String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+		//String jwt = ChirpstackRequest.chirpstackLogin("admin@admin.dk", "admin");
+			String jwt = ChirpstackRequest.chirpstackLogin("admin", "noseas");
 		
 		// Test: creating user
 		String id = ChirpstackRequest.createUser(jwt, "Rasmussen", "yolo123", null, "test@test.dk", false);
@@ -222,11 +230,13 @@ public class MainTest {
 		
 		// Test: login/get token as user
 		
-		String json = "{\"username\":\"admin@admin.dk\",\"password\":\"admin\"}";
+		//String json = "{\"username\":\"admin@admin.dk\",\"password\":\"admin\"}";
+		String json = "{\"username\":\"admin\",\"password\":\"noseas\"}";
 	    ObjectMapper mapper = new ObjectMapper();
 	 
 	    LoginRequest loginrequest = mapper.reader().forType(LoginRequest.class).readValue(json);
-	    assertEquals("admin@admin.dk", loginrequest.getUsername());
+	    //assertEquals("admin@admin.dk", loginrequest.getUsername());
+		assertEquals("admin", loginrequest.getUsername());
 		
 		// Test: login/get token as user
 	}
