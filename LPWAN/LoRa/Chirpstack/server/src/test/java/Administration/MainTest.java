@@ -90,8 +90,8 @@ public class MainTest {
 			}
 			
 			int afterCreation = NWA.getInstance().getHouseDBsize();
-			assertEquals(afterCreation, (initialHouseNumber+2));
-			
+			//assertEquals(afterCreation, (initialHouseNumber+2));
+			assertEquals((initialHouseNumber+2), afterCreation);
 			
 			// Test: delete house (transfer devices to transferHouse)
 			server.deleteHouse(jwt, testHome.getHomeID().getID(), transferHome.getHomeID().getID());
@@ -149,12 +149,14 @@ public class MainTest {
 			devEUI = server.createDevice(jwt, testHome.getHomeID().getID());
 
 			int afterCreationNumber =NWA.getInstance().getDeviceDBsize();
-			assertEquals(afterCreationNumber, initialDeviceNumber+1);
+			//assertEquals(afterCreationNumber, initialDeviceNumber+1);
+			assertEquals(initialDeviceNumber+1, afterCreationNumber);
 			
 			// Test: delete Device
 			server.deleteDevice(jwt, devEUI);
 			int afterDeletionNumber = NWA.getInstance().getDeviceDBsize();
-			assertEquals(afterDeletionNumber,initialDeviceNumber);
+			//assertEquals(afterDeletionNumber,initialDeviceNumber);
+			assertEquals(initialDeviceNumber,afterDeletionNumber);
 		} catch (InterruptedException e) {
 			assertTrue(false);
 			
