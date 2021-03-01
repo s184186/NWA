@@ -44,7 +44,7 @@ public class Server {
 	
 	private static String chirpstack_ip = "82.211.197.44"; 
 	private static String mqtt_port = "1883"; 
-	private static String chirpstack_port = "1700";
+	private static String chirpstack_port = "8080";
 	public static int application_id = 1;
 	public static int organization_id = 1;
 	public static String device_profile = "fa1cdf8a-e5cc-47fb-8484-ff1f94974f4a";
