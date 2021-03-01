@@ -73,8 +73,8 @@ public class Server {
 	public Server() throws InterruptedException {
 		userDB = new DatabaseArrayList<User>();
 		
-		String admin_usr = "admin@admin.dk";
-		String admin_pw = "admin";
+		String admin_usr = "admin@admin.com";
+		String admin_pw = "noseas";
 		// log into chirpstack
 		api_key = ChirpstackRequest.getJWT(admin_usr, admin_pw);
 			

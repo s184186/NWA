@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SimpleHash">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LPWAN/LoRa/Chirpstack/server/SimpleHash.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
