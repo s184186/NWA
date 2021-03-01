@@ -112,8 +112,6 @@
 		<groupId>test.com.sipHash</groupId>
 		<artifactId>sipHash</artifactId>
 		<version>1.0</version>
-		<scope>system</scope>
-		<systemPath>/home/noah/NWA/LPWAN/LoRa/Chirpstack/server/SimpleHash.jar</systemPath>
 	</dependency>
     
   </dependencies>
