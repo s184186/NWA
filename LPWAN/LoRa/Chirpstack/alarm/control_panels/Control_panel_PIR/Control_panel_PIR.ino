@@ -1,3 +1,7 @@
+
+
+
+
 /*******************************************************************************
  * Copyright (c) 2015 Thomas Telkamp and Matthijs Kooijman
  *
@@ -35,8 +39,9 @@
 #include <EEPROM.h>
 #include <Wire.h>
 #include <LiquidCrystal.h>
-#include <Keypad.h>
 #include "SipHash_2_4.h"
+#include <Keypad.h>
+
 
 
 //////////////////////////////////////////////// Sensor setup ///////////////////////////////////////////////////////////////////////////
@@ -47,6 +52,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <Keypad.h>
 #include "SipHash_2_4.h"
+
 
 uint8_t hashKey[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x00, 0x00};
 
@@ -82,15 +88,18 @@ void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This should also be in little endian format, see above.
 //static const u1_t PROGMEM DEVEUI[8]={ 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-static const u1_t PROGMEM DEVEUI[8]={0xba, 0x8b, 0x7c, 0xd2, 0x94, 0x0f, 0xcc, 0x19 };
+//static const u1_t PROGMEM DEVEUI[8]={0xba, 0x8b, 0x7c, 0xd2, 0x94, 0x0f, 0xcc, 0x19 };
+static const u1_t PROGMEM DEVEUI[8]={0x99,0x79,0x2e,0xd4, 0x6e, 0xe6, 0xe1, 0xdb};
+
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // This key should be in big endian format (or, since it is not really a
-// number but a block of memory, endianness does not really apply). In
+// number but a block of memory, endianness does not really aul_tpply). In
 // practice, a key taken from ttnctl can be copied as-is.
 // The key shown here is the semtech default key.
 //static const u1_t PROGMEM APPKEY[16] = { 0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6, 0xAB, 0xF7, 0x15, 0x88, 0x09, 0xCF, 0x4F, 0x3C };
-static const u1_t PROGMEM APPKEY[16] = {0xe8, 0x9b, 0x2b, 0x36, 0x95, 0xfa, 0xa7, 0x0e, 0x15, 0x55, 0x27, 0xbc, 0xe5, 0x45, 0x7a, 0x2a};
+//static const u1_t PROGMEM APPKEY[16] = {0xe8, 0x9b, 0x2b, 0x36, 0x95, 0xfa, 0xa7, 0x0e, 0x15, 0x55, 0x27, 0xbc, 0xe5, 0x45, 0x7a, 0x2a};
+static const u1_t PROGMEM APPKEY[16] = {0xcf, 0x93, 0x82, 0xf1, 0xb2, 0xde, 0x84, 0x1d, 0xd2, 0x11, 0x95, 0x99, 0xee, 0xd7, 0x13, 0xa7};
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 static uint8_t mydata[] = "Hello, world!";
