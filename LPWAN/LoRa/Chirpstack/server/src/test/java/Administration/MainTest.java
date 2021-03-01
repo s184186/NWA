@@ -238,7 +238,7 @@ public class MainTest {
 	 
 	    LoginRequest loginrequest = mapper.reader().forType(LoginRequest.class).readValue(json);
 	    //assertEquals("admin@admin.dk", loginrequest.getUsername());
-		assertEquals("admin", loginrequest.getUsername());
+		assertEquals("admin@admin.com", loginrequest.getUsername());
 		
 		// Test: login/get token as user
 	}
